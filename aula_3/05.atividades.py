@@ -2,92 +2,110 @@
 
 #1.Filtre produtos com preço > 1000 usando list comprehension;
 
-lojavirtual = [
-    {"nome": "Celular", "preco": 1500},
-    {"nome": "Computador", "preco": 2000},
-    {"nome": "Tablet", "preco": 1000},
-    {"nome": "Drone", "preco": 2200}
+# Lista de produtos com preços
+produtos = [
+    {"nome": "Notebook", "preco": 3500},
+    {"nome": "Smartphone", "preco": 1200},
+    {"nome": "Fone de Ouvido", "preco": 200},
+    {"nome": "Monitor", "preco": 800},
+    {"nome": "Cadeira Gamer", "preco": 1500}
 ]
 
-def filtrar_produtos(preco_limite, operador):
-    if operador == '>':
-        return [produto for produto in lojavirtual if produto["preco"] > preco_limite]
-    elif operador == '<=':
-        return [produto for produto in lojavirtual if produto["preco"] <= preco_limite]
+# Variavel para armazenar produtos com preço maior que 1000
+produtos_filtrados = [produto for produto in produtos if produto["preco"] > 1000]
 
-def menu():
-    print("Escolha uma opção:")
-    print("1 - Filtrar produtos acima de 1000")
-    print("2 - Filtrar produtos abaixo ou igual a 1000")
-    print("3 - Sair")
+# Exibi a lista de e os produtos filtrados
+print(f'Produtos com preço maior que 1000: {produtos_filtrados}')
 
-    opcao = input("Digite o número da opção desejada: ")
-    return opcao
-
-def main():
-    while True:
-        opcao = menu()
-        
-        if opcao == '1':
-            produtos_acima_1000 = filtrar_produtos(1000, '>')
-            print("Produtos acima de 1000:")
-            for produto in produtos_acima_1000:
-                print(f"{produto['nome']} - R${produto['preco']:.2f}")
-        
-        elif opcao == '2':
-            produtos_abaixo_1000 = filtrar_produtos(1000, '<=')
-            print("Produtos abaixo ou igual a 1000:")
-            for produto in produtos_abaixo_1000:
-                print(f"{produto['nome']} - R${produto['preco']:.2f}")
-
-        elif opcao == '3':
-            print("Saindo do programa...")
-            break
-        
-        else:
-            print("Opção inválida, tente novamente.")
-
-main()
 
 #2.Conte quantos produtos existem por categoria (usar dicionário);
 
+
+produtos = {
+    "Eletrônicos": [
+        {"nome": "Notebook", "preco": 3500},
+        {"nome": "Smartphone", "preco": 1200},
+        {"nome": "Monitor", "preco": 800}
+    ],
+    "Acessórios": [
+        {"nome": "Fone de Ouvido", "preco": 200},
+        {"nome": "Teclado Mecânico", "preco": 400},
+        {"nome": "Mouse", "preco": 150}
+    ],
+    "Móveis": [
+        {"nome": "Cadeira Gamer", "preco": 1500},
+        {"nome": "Mesa para Computador", "preco": 900}
+    ]
+}
+
+# Criando dicionário para armazenar contagem por categoria
+contagem_categorias = {}
+
+# Exibindo os produtos por categoria
+for categoria, itens in produtos.items():
+    print(f"\nCategoria: {categoria}")
+    
+    # Contagem de produtos por categoria
+    contagem_categorias[categoria] = len(itens)
+    
+    for item in itens:
+        print(f"- {item['nome']} | Preço: R$ {item['preco']}")
+
+# Exibindo a quantidade total de produtos por categoria
+print("\nQuantidade de produtos por categoria:")
+for categoria, quantidade in contagem_categorias.items():
+    print(f"{categoria}: {quantidade} produto(s)")
+
+
+
 #3.Remova duplicatas de uma lista de pedidos usando set.
 
+# Lista de pedidos com itens duplicados
+pedidos = ["Notebook", "Smartphone", "Monitor", "Notebook", "Teclado", "Smartphone", "Mouse"]
+
+# Removendo duplicatas usando set
+pedidos_unicos = list(set(pedidos))
+
+# Exibindo a lista sem duplicatas
+print(pedidos_unicos)
+
+
+
+
 #4.Uma empresa contratou seus serviços para armazenar dados de colaboradores em memória e realizar operações como:
-
-#//Adicionar novos colaboradores.
-
-def adicionar_colaborador(id, nome, salario):
-    if id in colaboradores:
-        print(f"Erro: colaborador com ID {id} já existe.")
-        return
-    colaboradores[id] = {"nome": nome, "salario": salario}
-    print(f"Colaborador {nome} adicionado com sucesso.")
-
-#//Buscar colaborador por ID.
-
-    
-}
-    
-    "id": 101,
-    "nome": "Caio",
-    "cargo": "Desenvolvedora Back-End"
-} 
-
-    "id": 101,
-    "nome": "Mirella",
-    "cargo": "Desenvolvedora de Python"
-} 
-
-    "id": 101,
-    "nome": "Andressa",
-    "cargo": "Analista de segurança"
-} 
-
-
-#//Listar colaboradores com salário acima de X.
-
-
-
+'''
+Adicionar novos colaboradores.
+Buscar colaborador por ID.
+Listar colaboradores com salário acima de X.
 '''
 #Implemente utilizando funções.
+
+# Lista para armazenar colaboradores
+colaboradores = []
+
+# Função para adicionar um novo colaborador
+def adicionar_colaborador(id, nome, cargo, salario):
+    colaboradores.append({"id": id, "nome": nome, "cargo": cargo, "salario": salario})
+    print(f"Colaborador {nome} adicionado com sucesso!")
+
+# Função para buscar colaborador por ID
+def buscar_colaborador(id):
+    for colaborador in colaboradores:
+        if colaborador["id"] == id:
+            return colaborador
+    return "Colaborador não encontrado."
+
+# Função para listar colaboradores com salário acima de X
+def listar_colaboradores_por_salario(minimo):
+    return [colaborador for colaborador in colaboradores if colaborador["salario"] > minimo]
+
+# Testando as funções
+adicionar_colaborador(1, "Caio Guedes", "Desenvolvedor", 4500)
+adicionar_colaborador(2, "Andressa Motta", "Gerente", 7000)
+adicionar_colaborador(3, "Mirella Damecena", "Analista", 3000)
+
+print("\nBusca por ID:")
+print(buscar_colaborador(2))  # Retorna os dados de Andressa Motta
+
+print("\nColaboradores com salário acima de 4000:")
+print(listar_colaboradores_por_salario(4000))  # Lista apenas quem ganha mais que 4000
