@@ -13,15 +13,14 @@ with open('usuarios.txt' ,'r') as dados:
     conteudo = dados.read()
     print(conteudo)
 
+def listarUsuarios(nome_arquivo):
+    '''Retorna o número de linhas de um arquivo.'''
+    with open(nome_arquivo, 'r') as arquivo:
+        return len(arquivo.readlines())
+    
 import os
 if os.path.exists('usuarios.txt'):
     os.remove('usuarios.txt')
     print("Arquivo removido!")
 else:
     print("Arquivo não encontrado.")
-
-    def listarUsuarios(nome_arquivo):
-    '''Retorna o número de linhas de um arquivo.'''
-    with open(nome_arquivo, 'r') as arquivo:
-        return len(arquivo.readlines())
-    
