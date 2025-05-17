@@ -1,13 +1,30 @@
-from django.urls import path
-from . import views
+"""
+URL configuration for projeto02 project.
 
-app_name = 'app02'
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+# projeto02/urls.py
+from django.contrib import admin
+from django.urls import path
+from app02.views import home, produtos, contatos # Importando novas views
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('produtos/', views.produtos, name='produtos'),
-    path('contatos/',views.contatos,name='contatos'),
-    # Adicione outras URLs conforme necessário
+    path('admin/', admin.site.urls),
+    path('', home, name='home'),  # Página inicial
+    path('produtos/', produtos, name='produtos'),  # Página sobre nós
+    path('contatos/', contatos, name='contatos'),  # Página de contato
 
+   
 ]
-                                                             
+
