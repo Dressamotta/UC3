@@ -15,7 +15,6 @@ else:
     print("Reprovado")
 
 #//2. Soma dos Números Pares em um Intervalo: Peça ao usuário dois números, representando o início e o fim de um intervalo. Use um loop (for ou while) para calcular a soma de todos os números pares nesse intervalo e exiba o resultado.
-
 inicio = int(input("Digite o número inicial do intervalo: "))
 fim = int(input("Digite o número final do intervalo: "))
 
