@@ -1,0 +1,14 @@
+{% extends 'meuapp/base.html' %}
+
+{% block title %}Atualizar Perfil{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Atualizar Foto de Perfil</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+{% endblock %}
